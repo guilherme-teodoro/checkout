@@ -90,6 +90,7 @@ export const ExpirationDate = styled.div`
   color: #ffffff;
   text-shadow: 0px 1px 2px #000000b3;
   text-align: right;
+
   ${down("md")} {
    font-size: 13px;
   }
@@ -101,6 +102,11 @@ export const CVV = styled.div`
   top: 112px;
   letter-spacing: 3px;
   font-family: monospace;
+
+  ${down("md")} {
+    top: 88px;
+    left: 135px;
+  }
 `;
 
 export type Brands = "american" | "visa" | "mastercard" | "none";

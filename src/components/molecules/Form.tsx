@@ -1,11 +1,12 @@
-import React, { Ref, DetailedHTMLProps, InputHTMLAttributes } from "react";
-import { Field, Input, Label, MaskedInput, Select } from "../atoms/Form";
+import React, { Ref } from "react";
+import { Field, Input, Label, MaskedInput, Select, ErrorMessageLabel } from "../atoms/Form";
 import { range, formatCurrency } from "../../util";
 
-type Props = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
+type Props = {
+  onBlur?: any;
+  onFocus?: any;
+  invalid: any;
+}
 
 export const CardNumber = React.forwardRef(
   (props: Props, ref: Ref<HTMLInputElement>) => {
@@ -13,6 +14,7 @@ export const CardNumber = React.forwardRef(
       <Field>
         <MaskedInput
           placeholder="0000 0000 0000 0000"
+          invalid={props.invalid}
           id="cardNumber"
           mask={"9999 9999 9999 9999"}
           ref={ref}
@@ -31,6 +33,7 @@ export const CardName = React.forwardRef(
       <Field>
         <Input
           ref={ref}
+          invalid={props.invalid}
           placeholder="José da Silva"
           id="cardName"
           name="cardName"
@@ -48,6 +51,7 @@ export const ExpirationDate = React.forwardRef(
         <MaskedInput
           mask={"99/99"}
           ref={ref}
+          invalid={props.invalid}
           placeholder="12/20"
           id="expirationDate"
           name="expirationDate"
@@ -70,6 +74,7 @@ export const CardCVV = React.forwardRef(
           placeholder="123"
           id="cardCVV"
           name="cardCVV"
+          invalid={props.invalid}
         />
         <Label htmlFor="cardCVV">CVV</Label>
       </Field>
@@ -80,12 +85,13 @@ export const CardCVV = React.forwardRef(
 type InstallmentsNumberProps = {
   maxInstallments: number;
   amount: number;
+  invalid: boolean;
 };
 
 export const InstallmentsNumber = React.forwardRef((props: InstallmentsNumberProps, ref: Ref<HTMLSelectElement>) => {
   return (
     <Field>
-      <Select name="installmentNumber" ref={ref}>
+      <Select invalid={props.invalid} name="installmentNumber" ref={ref}>
         {range(1, props.maxInstallments).map((installment) => {
           return (
             <option key={installment} value={installment}>
@@ -97,3 +103,12 @@ export const InstallmentsNumber = React.forwardRef((props: InstallmentsNumberPro
     </Field>
   );
 });
+
+type ErrorLabelProps = {
+  children: string;
+  show: boolean;
+}
+
+export const ErrorLabel: React.FC<ErrorLabelProps> = (props) => {
+    return props.show ? <ErrorMessageLabel>{props.children}</ErrorMessageLabel> : null;
+}

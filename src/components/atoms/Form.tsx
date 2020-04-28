@@ -2,9 +2,16 @@ import React, { Ref } from "react";
 import styled from "styled-components";
 import TextMask from "react-input-mask";
 
+type InputProps = {
+  invalid: boolean;
+};
+
 export const Input = styled.input`
   border: none;
-  border-bottom: 1px solid #c9c9c9;
+  border-bottom: 1px solid
+    ${(props: InputProps) => (props.invalid ? `#EB5757` : `#c9c9c9`)};
+  box-shadow: 0px 1px 0px
+    ${(props: InputProps) => (props.invalid ? `#EB5757` : `transparent`)};
   font-size: 17px;
   color: #3c3c3c;
   padding: 5px 0;
@@ -14,10 +21,12 @@ export const Input = styled.input`
   -webkit-appearance: none;
   border-radius: 0;
   cursor: text;
+  position: relative;
 
   &::-webkit-input-placeholder {
     opacity: 0;
     transition: inherit;
+    color: #c9c9c9;
   }
 
   &:placeholder-shown + label {
@@ -47,11 +56,13 @@ type MaskedInputProps = {
   id: string;
   name: string;
   maxlength?: string;
+  invalid: boolean;
 };
 
 type InputMemoProps = {
   inputRef: Ref<HTMLInputElement>;
   maxlength?: string;
+  invalid: boolean;
 };
 
 const InputMemo = React.memo((props: InputMemoProps) => {
@@ -68,7 +79,11 @@ export const MaskedInput = React.forwardRef(
         inputRef={ref}
         mask={props.mask}
       >
-        <InputMemo maxlength={props.maxlength} inputRef={ref} />
+        <InputMemo
+          invalid={props.invalid}
+          maxlength={props.maxlength}
+          inputRef={ref}
+        />
       </TextMask>
     );
   }
@@ -87,9 +102,16 @@ export const Field = styled.div`
   width: 100%;
 `;
 
+type SelectProps = {
+  invalid: boolean;
+};
+
 export const Select = styled.select`
   border: none;
-  border-bottom: 1px solid #c9c9c9;
+  border-bottom: 1px solid
+    ${(props: SelectProps) => (props.invalid ? `#EB5757` : `#c9c9c9`)};
+  box-shadow: 0px 1px 0px
+    ${(props: SelectProps) => (props.invalid ? `#EB5757` : `transparent`)};
   font-size: 17px;
   color: #3c3c3c;
   padding: 5px 0;
@@ -98,4 +120,11 @@ export const Select = styled.select`
   -webkit-appearance: none;
   border-radius: 0;
   background: transparent;
+`;
+
+export const ErrorMessageLabel = styled.span`
+  color: #eb5757;
+  font-size: 13px;
+  position: absolute;
+  margin-top: 5px;
 `;

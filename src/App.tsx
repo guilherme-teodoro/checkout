@@ -63,6 +63,7 @@ export default function App() {
             <Cell>
               <Checkout
                 register={register}
+                errors={errors}
                 onFocusCVV={() => changeFlip(true)}
                 onBlurCVV={() => changeFlip(false)}
               />
