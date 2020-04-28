@@ -41,7 +41,7 @@ export const CardName = React.forwardRef(
   }
 );
 
-export const CardValidate = React.forwardRef(
+export const ExpirationDate = React.forwardRef(
   (props: Props, ref: Ref<HTMLInputElement>) => {
     return (
       <Field>
@@ -49,10 +49,10 @@ export const CardValidate = React.forwardRef(
           mask={"99/99"}
           ref={ref}
           placeholder="12/20"
-          id="cardValidate"
-          name="cardValidate"
+          id="expirationDate"
+          name="expirationDate"
         />
-        <Label htmlFor="cardValidate">Validade</Label>
+        <Label htmlFor="expirationDate">Validade</Label>
       </Field>
     );
   }

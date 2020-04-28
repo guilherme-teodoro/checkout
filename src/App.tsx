@@ -5,12 +5,22 @@ import "normalize.css";
 import { useForm } from "react-hook-form";
 import { Continue } from "./components/molecules/Button";
 import { CreditCard } from "./components/molecules/CreditCard";
+import { Step } from "./components/molecules/Step";
+import { Grid, Cell } from "styled-css-grid";
+import {
+  Sidebar,
+  Container,
+  Back,
+  Title,
+  Footer,
+  Content,
+} from "./components/atoms/Layout";
 
 type FormData = {
   cardName: string;
   cardNumber: string;
   cardCVV: string;
-  cardValidate: string;
+  expirationDate: string;
   installmentNumber: number;
 };
 
@@ -24,20 +34,43 @@ export default function App() {
   const watchAllFields = watch();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Checkout
-        register={register}
-        onFocusCVV={() => changeFlip(true)}
-        onBlurCVV={() => changeFlip(false)}
-      />
-      <Continue type="submit" />
-      <CreditCard
-        flip={isFlipped}
-        number={watchAllFields.cardNumber}
-        name={watchAllFields.cardName}
-        expirationDate={watchAllFields.cardValidate}
-        cvv={watchAllFields.cardCVV}
-      />
-    </form>
+    <Container>
+      <Sidebar>
+        <Back>Alterar forma de pagamento</Back>
+        <Title>Adicione um novo cartão de crédito</Title>
+        <CreditCard
+          flip={isFlipped}
+          number={watchAllFields.cardNumber}
+          name={watchAllFields.cardName}
+          expirationDate={watchAllFields.expirationDate}
+          cvv={watchAllFields.cardCVV}
+        />
+      </Sidebar>
+      <Content>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Grid columns={1} rowGap="30px">
+            <Step
+              steps={[
+                { counter: 1, label: "Carrinho", done: true },
+                { counter: 2, label: "Pagamento", done: false },
+                { counter: 3, label: "Confirmação", done: false },
+              ]}
+            />
+            <Cell>
+              <Checkout
+                register={register}
+                onFocusCVV={() => changeFlip(true)}
+                onBlurCVV={() => changeFlip(false)}
+              />
+            </Cell>
+            <Cell>
+              <Footer>
+                <Continue type="submit" />
+              </Footer>
+            </Cell>
+          </Grid>
+        </form>
+      </Content>
+    </Container>
   );
 }

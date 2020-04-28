@@ -1,9 +1,9 @@
-import React, { Ref } from "react";
+import React from "react";
 import {
   CardName,
   CardNumber,
   CardCVV,
-  CardValidate,
+  ExpirationDate,
   InstallmentsNumber,
 } from "../molecules/Form";
 import { Grid, Cell } from "styled-css-grid";
@@ -35,7 +35,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
         />
       </Cell>
       <Cell width={1}>
-        <CardValidate ref={register({ required: "required" })} />
+        <ExpirationDate ref={register({ required: "required" })} />
       </Cell>
       <Cell width={2}>
         <InstallmentsNumber
