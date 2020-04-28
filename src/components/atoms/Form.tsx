@@ -27,7 +27,7 @@ export const Input = styled.input`
     overflow: hidden;
     text-overflow: ellipsis;
     transform-origin: left bottom;
-    transform: translate(0, 1.60rem) scale(1.4);
+    transform: translate(0, 1.6rem) scale(1.4);
   }
 
   &:not(:placeholder-shown) + label,
@@ -46,23 +46,33 @@ type MaskedInputProps = {
   mask: string;
   id: string;
   name: string;
+  maxlength?: string;
 };
 
 type InputMemoProps = {
   inputRef: Ref<HTMLInputElement>;
+  maxlength?: string;
 };
 
 const InputMemo = React.memo((props: InputMemoProps) => {
   return <Input ref={props.inputRef} {...props} />;
 });
 
-export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: Ref<HTMLInputElement>) => {  
-  return (
-    <TextMask id={props.name} name={props.name} placeholder={props.placeholder} inputRef={ref} mask={props.mask}>
-      <InputMemo inputRef={ref} />
-    </TextMask>
-  );
-});
+export const MaskedInput = React.forwardRef(
+  (props: MaskedInputProps, ref: Ref<HTMLInputElement>) => {
+    return (
+      <TextMask
+        id={props.name}
+        name={props.name}
+        placeholder={props.placeholder}
+        inputRef={ref}
+        mask={props.mask}
+      >
+        <InputMemo maxlength={props.maxlength} inputRef={ref} />
+      </TextMask>
+    );
+  }
+);
 
 export const Label = styled.label`
   color: #c9c9c9;

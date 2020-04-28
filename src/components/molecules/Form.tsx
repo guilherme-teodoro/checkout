@@ -14,8 +14,9 @@ export const CardNumber = React.forwardRef(
         <MaskedInput
           placeholder="0000 0000 0000 0000"
           id="cardNumber"
-          mask={"9999 99999 99999 99999"}
+          mask={"9999 9999 9999 9999"}
           ref={ref}
+          maxlength="18"
           name="cardNumber"
         />
         <Label htmlFor="cardNumber">Número do cartão</Label>
@@ -57,18 +58,20 @@ export const CardValidate = React.forwardRef(
   }
 );
 
-export const CardCCV = React.forwardRef(
+export const CardCVV = React.forwardRef(
   (props: Props, ref: Ref<HTMLInputElement>) => {
     return (
       <Field>
-        <MaskedInput
+        <Input
           ref={ref}
-          mask={"999"}
+          onBlur={props.onBlur}
+          onFocus={props.onFocus}
+          maxLength={3}
           placeholder="123"
-          id="cardCCV"
-          name="cardCCV"
+          id="cardCVV"
+          name="cardCVV"
         />
-        <Label htmlFor="cardCCV">CCV</Label>
+        <Label htmlFor="cardCVV">CVV</Label>
       </Field>
     );
   }

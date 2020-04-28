@@ -1,44 +1,49 @@
-import React from "react";
+import React, { Ref } from "react";
 import {
   CardName,
   CardNumber,
-  CardCCV,
+  CardCVV,
   CardValidate,
   InstallmentsNumber,
 } from "../molecules/Form";
-import { Continue } from "../molecules/Button";
-import { useForm } from "react-hook-form";
+import { Grid, Cell } from "styled-css-grid";
 
-type FormData = {
-  cardName: String;
-  cardNumber: String;
-  cardCCV: String;
-  cardValidate: String;
-  installmentNumber: Number;
+type CheckoutProps = {
+  register: any;
+  onBlurCVV: any;
+  onFocusCVV: any;
 };
 
-export const Checkout = () => {
-  const { handleSubmit, watch, register, errors } = useForm<FormData>();
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-  };
-
-  const watchAllFields = watch();
-  console.log(watchAllFields);
-
+export const Checkout: React.FC<CheckoutProps> = ({
+  register,
+  onBlurCVV,
+  onFocusCVV,
+}) => {
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <CardNumber ref={register({ required: "required" })} />
-      <CardName ref={register({ required: "required" })} />
-      <CardCCV ref={register({ required: "required" })} />
-      <CardValidate ref={register({ required: "required" })} />
-      <InstallmentsNumber
-        ref={register({ required: "required" })}
-        maxInstallments={12}
-        amount={1200.00}
-      />
-      <Continue type="submit">Vai</Continue>
-      {JSON.stringify(watchAllFields)}
-    </form>
+    <Grid columns={2} rowGap="30px" columnGap="20px">
+      <Cell width={2}>
+        <CardNumber ref={register({ required: "required" })} />
+      </Cell>
+      <Cell width={2}>
+        <CardName ref={register({ required: "required" })} />
+      </Cell>
+      <Cell width={1}>
+        <CardCVV
+          onBlur={onBlurCVV}
+          onFocus={onFocusCVV}
+          ref={register({ required: "required" })}
+        />
+      </Cell>
+      <Cell width={1}>
+        <CardValidate ref={register({ required: "required" })} />
+      </Cell>
+      <Cell width={2}>
+        <InstallmentsNumber
+          ref={register({ required: "required" })}
+          maxInstallments={12}
+          amount={1200.0}
+        />
+      </Cell>
+    </Grid>
   );
 };

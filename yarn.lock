@@ -8400,7 +8400,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8565,6 +8565,11 @@ react-app-polyfill@^1.0.6:
     raf "^3.4.1"
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
+
+react-card-flip@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/react-card-flip/-/react-card-flip-1.0.10.tgz#f3eab968f2cba6de6eccb84cf73bcaf6b53fb974"
+  integrity sha512-BqK6PmP+L/xmcH1AoMuirbxRuDIiaNy3r8734GJQqEyIWoW8L4j2c/di6mbNg+I2rGue3tLH1I9QbJLd7M89ww==
 
 react-dev-utils@^10.2.1:
   version "10.2.1"
@@ -9859,6 +9864,13 @@ styled-components@^5.1.0:
     hoist-non-react-statics "^3.0.0"
     shallowequal "^1.1.0"
     supports-color "^5.5.0"
+
+styled-css-grid@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/styled-css-grid/-/styled-css-grid-1.2.1.tgz#dbaff2c159745002bc590f0fe3414675f1a15945"
+  integrity sha512-ileif/si3F62bfTD6f9yPe2SwNXfMdaaiIL9DYuw7TPMqle1sQBEjXUaIbYCzMpsHklF/xctgGUhBb3+thlZsQ==
+  dependencies:
+    prop-types "^15.6.0"
 
 stylehacks@^4.0.0:
   version "4.0.3"
