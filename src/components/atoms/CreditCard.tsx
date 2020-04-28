@@ -1,4 +1,16 @@
 import styled from "styled-components";
+import { down } from "styled-breakpoints";
+
+export const CardWrapper = styled.div`
+  width: 364px;
+  height: 240px;
+
+  ${down("md")} {
+    width: 280px;
+    height: 180px;
+    margin: 10px auto 0;
+  }
+`;
 
 type CardFrontProps = {
   active: boolean;
@@ -14,8 +26,16 @@ export const CardFront = styled.div`
         : "images/credit-card-inactive.svg"})
     no-repeat;
   position: relative;
+  background-size: cover;
   padding: 30px;
   padding-bottom: 45px;
+
+  ${down("md")} {
+    width: 280px;
+    height: 180px;
+    padding: 15px;
+    padding-bottom: 20px;
+  }
 `;
 
 export const CardBack = styled.div`
@@ -28,8 +48,16 @@ export const CardBack = styled.div`
         : "images/credit-card-back-inactive.svg"})
     no-repeat;
   position: relative;
+  background-size: cover;
   padding: 30px;
   padding-bottom: 45px;
+
+  ${down("md")} {
+    width: 280px;
+    height: 180px;
+    padding: 15px;
+    padding-bottom: 20px;
+  }
 `;
 
 export const Number = styled.div`
@@ -40,6 +68,10 @@ export const Number = styled.div`
   color: #ffffff;
   text-shadow: 0px 1px 2px #000000b3;
   opacity: 1;
+
+  ${down("md")} {
+   font-size: 17px;
+  }
 `;
 
 export const Name = styled.div`
@@ -47,6 +79,10 @@ export const Name = styled.div`
   color: #ffffff;
   text-shadow: 0px 1px 2px #000000b3;
   text-transform: uppercase;
+
+  ${down("md")} {
+   font-size: 13px;
+  }
 `;
 
 export const ExpirationDate = styled.div`
@@ -54,6 +90,9 @@ export const ExpirationDate = styled.div`
   color: #ffffff;
   text-shadow: 0px 1px 2px #000000b3;
   text-align: right;
+  ${down("md")} {
+   font-size: 13px;
+  }
 `;
 
 export const CVV = styled.div`

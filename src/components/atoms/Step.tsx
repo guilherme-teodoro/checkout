@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import { down } from 'styled-breakpoints';
 
 export const StepWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${down('md')} {
+    display: none;
+  }
 `;
 
 export const StepItem = styled.div`
@@ -50,4 +55,15 @@ export const StepIcon = styled.span`
   height: 16px;
   background: url(images/step-icon.svg);
   margin: 0 24px;
+`;
+
+export const StepSimpleWrapper = styled.div`
+  display: none;
+  color: white;
+  text-align: center;
+  flex: 1 0 auto;
+
+  ${down('md')} {
+    display: block;
+  }
 `;

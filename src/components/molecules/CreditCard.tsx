@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Cell } from "styled-css-grid";
 import ReactCardFlip from "react-card-flip";
 import {
+  CardWrapper,
   CardFront,
   CardBack,
   Logo,
@@ -45,6 +46,7 @@ export const CreditCard: React.FC<CreditCardProps> = ({
   const brand = number ? getBrand(number.substr(0, 1)) : "none";
 
   return (
+    <CardWrapper>
     <ReactCardFlip isFlipped={flip}>
       <CardFront active={number ? true : false}>
         <Grid alignContent="space-between" columns="1" height="100%">
@@ -68,5 +70,6 @@ export const CreditCard: React.FC<CreditCardProps> = ({
         <CVV>{cvv ? cvv.padEnd(3, "*") : "***"}</CVV>
       </CardBack>
     </ReactCardFlip>
+    </CardWrapper>
   );
 };

@@ -6,6 +6,7 @@ import {
   StepLabel,
   StepCounter,
   StepIcon,
+  StepSimpleWrapper
 } from "../atoms/Step";
 import { intersperse } from "../../util";
 
@@ -34,5 +35,21 @@ export const Step: React.FC<StepProps> = ({ steps }) => {
         <StepIcon />
       )}
     </StepWrapper>
+  );
+};
+
+type StepSimpleProps = {
+  steps: number;
+  currentStep: number;
+};
+
+export const StepSimple: React.FC<StepSimpleProps> = ({
+  steps,
+  currentStep,
+}) => {
+  return (
+    <StepSimpleWrapper>
+      Etapa {currentStep} de {steps}
+    </StepSimpleWrapper>
   );
 };

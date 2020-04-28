@@ -5,10 +5,11 @@ import "normalize.css";
 import { useForm } from "react-hook-form";
 import { Continue } from "./components/molecules/Button";
 import { CreditCard } from "./components/molecules/CreditCard";
-import { Step } from "./components/molecules/Step";
+import { Step, StepSimple } from "./components/molecules/Step";
 import { Grid, Cell } from "styled-css-grid";
 import {
   Sidebar,
+  SidebarTitle,
   Container,
   Back,
   Title,
@@ -36,7 +37,10 @@ export default function App() {
   return (
     <Container>
       <Sidebar>
-        <Back>Alterar forma de pagamento</Back>
+        <SidebarTitle>
+          <Back>Alterar forma de pagamento</Back>
+          <StepSimple currentStep={2} steps={3}></StepSimple>
+        </SidebarTitle>
         <Title>Adicione um novo cartão de crédito</Title>
         <CreditCard
           flip={isFlipped}
