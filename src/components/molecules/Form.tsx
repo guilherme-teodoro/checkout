@@ -91,7 +91,7 @@ type InstallmentsNumberProps = {
 export const InstallmentsNumber = React.forwardRef((props: InstallmentsNumberProps, ref: Ref<HTMLSelectElement>) => {
   return (
     <Field>
-      <Select invalid={props.invalid} name="installmentNumber" ref={ref}>
+      <Select invalid={props.invalid} data-testid="installment" name="installmentNumber" ref={ref}>
         {range(1, props.maxInstallments).map((installment) => {
           return (
             <option key={installment} value={installment}>

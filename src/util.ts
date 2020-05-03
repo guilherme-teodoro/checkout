@@ -9,12 +9,16 @@ export function formatCurrency(value: number): string {
   }).format(value);
 }
 
-export function intersperse(arr:Array<any>, sep: any) {
+export function intersperse(arr: any[], sep: any) {
   if (arr.length === 0) {
-      return [];
+    return [];
   }
 
-  return arr.slice(1).reduce(function(xs, x, i) {
-      return xs.concat([sep, x]);
-  }, [arr[0]]);
+  return arr.slice(1).reduce(
+    (xs, x, idx) => {
+      const separator = typeof sep === "function" ? sep(idx) : sep;
+      return xs.concat([separator, x]);
+    },
+    [arr[0]]
+  );
 }

@@ -51,15 +51,15 @@ export const CreditCard: React.FC<CreditCardProps> = ({
       <CardFront active={number ? true : false}>
         <Grid alignContent="space-between" columns="1" height="100%">
           <Logo name={brand} />
-          <Number>
+          <Number data-testid="card-number">
             {number
               ? number.replace(/_/g, "*").substr(0, 19)
               : "**** **** **** ****"}
           </Number>
           <Grid justifyContent="space-between" columns={2}>
-            <Name>{name ? name : "nome do titular"}</Name>
+            <Name data-testid="card-name">{name ? name : "nome do titular"}</Name>
             <Cell>
-              <ExpirationDate>
+              <ExpirationDate data-testid="card-expiration-date">
                 {expirationDate ? expirationDate : "00/00"}
               </ExpirationDate>
             </Cell>
@@ -67,7 +67,7 @@ export const CreditCard: React.FC<CreditCardProps> = ({
         </Grid>
       </CardFront>
       <CardBack active={cvv ? true : false}>
-        <CVV>{cvv ? cvv.padEnd(3, "*") : "***"}</CVV>
+        <CVV data-testid="card-cvv">{cvv ? cvv.padEnd(3, "*") : "***"}</CVV>
       </CardBack>
     </ReactCardFlip>
     </CardWrapper>

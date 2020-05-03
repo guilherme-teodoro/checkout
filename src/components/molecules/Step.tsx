@@ -32,7 +32,7 @@ export const Step: React.FC<StepProps> = ({ steps }) => {
             </StepItem>
           );
         }),
-        <StepIcon />
+        (key: any) => <StepIcon key={key} />
       )}
     </StepWrapper>
   );
@@ -48,7 +48,7 @@ export const StepSimple: React.FC<StepSimpleProps> = ({
   currentStep,
 }) => {
   return (
-    <StepSimpleWrapper>
+    <StepSimpleWrapper data-testid="step-mobile">
       Etapa {currentStep} de {steps}
     </StepSimpleWrapper>
   );

@@ -7,6 +7,7 @@ import { Continue } from "./components/molecules/Button";
 import { CreditCard } from "./components/molecules/CreditCard";
 import { Step, StepSimple } from "./components/molecules/Step";
 import { Grid, Cell } from "styled-css-grid";
+import {ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 import {
   Sidebar,
   SidebarTitle,
@@ -28,8 +29,17 @@ type FormData = {
 export default function App() {
   const { handleSubmit, watch, register, errors } = useForm<FormData>();
   const [isFlipped, changeFlip] = React.useState<boolean>(false);
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  const onSubmit = async (data: FormData) => {
+    try {
+      await fetch(
+        "https://5eae10cd4350860016e13cab.mockapi.io/api/checkout",
+        { method: "POST", body: JSON.stringify(data) }
+      );
+      
+      ToastsStore.success("Cartão cadastrado com sucesso!")
+    } catch (e) {
+      ToastsStore.success("Ocorreu algum erro. :(")
+    }
   };
 
   const watchAllFields = watch();
@@ -76,6 +86,7 @@ export default function App() {
           </Grid>
         </form>
       </Content>
+      <ToastsContainer position={ToastsContainerPosition.BOTTOM_CENTER} store={ToastsStore} />
     </Container>
   );
 }
