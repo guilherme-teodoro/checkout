@@ -2,6 +2,10 @@
 
 Um formulário simulando o cadastro de cartão de crédito no checkout de um ecommerce. 
 
+| Desktop                                                                          | Mobile                                                                         |
+|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| ![desktop](https://github.com/guilherme-teodoro/checkout/raw/master/desktop.png) | ![mobile](https://github.com/guilherme-teodoro/checkout/raw/master/mobile.png) |
+
 ## Live
 https://checkout.guilherme-teodoro.now.sh
 
