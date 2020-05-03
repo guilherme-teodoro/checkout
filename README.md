@@ -2,6 +2,9 @@
 
 Um formulário simulando o cadastro de cartão de crédito no checkout de um ecommerce. 
 
+## Live
+https://checkout.guilherme-teodoro.now.sh
+
 ## O que foi usado
 
 ### Aplicação
