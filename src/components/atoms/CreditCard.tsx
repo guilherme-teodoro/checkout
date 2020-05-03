@@ -63,7 +63,7 @@ export const CardBack = styled.div`
 export const Number = styled.div`
   text-align: center;
   font-family: monospace;
-  font-size: 22.82px;
+  font-size: 22px;
   letter-spacing: 2.31px;
   color: #ffffff;
   text-shadow: 0px 1px 2px #000000b3;
@@ -75,7 +75,7 @@ export const Number = styled.div`
 `;
 
 export const Name = styled.div`
-  font-size: 16px;
+  font-size: 15px;
   color: #ffffff;
   text-shadow: 0px 1px 2px #000000b3;
   text-transform: uppercase;
