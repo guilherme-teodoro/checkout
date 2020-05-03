@@ -27,6 +27,7 @@ test("app (static elements)", () => {
   expect(getByText(/Carrinho/i)).toBeInTheDocument();
   expect(getByText(/Pagamento/g)).toBeInTheDocument();
   expect(getByText(/Confirmação/g)).toBeInTheDocument();
+  expect(getByText(/1x R\$1,200.00 sem juros/g)).toBeInTheDocument();
   expect(getByTestId("step-mobile")).toBeInTheDocument();
 });
 
