@@ -119,7 +119,10 @@ export const Select = styled.select`
   touch-action: manipulation;
   -webkit-appearance: none;
   border-radius: 0;
-  background: transparent;
+  background-color: transparent;
+  background-image: url('./images/select-icon.svg');
+  background-repeat: no-repeat;
+  background-position: right 8px;
 `;
 
 export const ErrorMessageLabel = styled.span`
